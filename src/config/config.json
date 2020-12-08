@@ -1,0 +1,15 @@
+{
+	"db": {
+		"username": "<MongoDBUsername>",
+		"password": "<MongoDBPassword>",
+		"host": "<MongoDBHost>",
+		"port": "<MongoDBPort>",
+		"name": "<MongoDBName>"
+	},
+	"sessionSecret": "<RandomString>",
+	"redis": {
+		"host": "127.0.0.1",
+		"port": 6379,
+		"password": ""
+	}
+}
