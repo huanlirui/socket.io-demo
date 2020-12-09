@@ -1,23 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
-  <script defer src="http://192.168.1.235:4000/socket.io/socket.io.js"></script>
-  <script defer src="index.js"></script>
-</head>
-<body>
-  <div id="room-container">
-    <!-- <% Object.keys(rooms).forEach(room => { %>
-      <div><%= room %></div>
-      <a href="/<%= room %>">Join</a>
-    <% }) %> -->
-  </div>
-  <form action="/rooms" method="POST" id="addRoomForm">
-    <input name="room" type="text" required id="roomInput">
-    <button type="submit">发起聊天</button>
-  </form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+    <script defer src="http://192.168.1.235:4000/socket.io/socket.io.js"></script>
+    <script defer src="index.js"></script>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      #room-name{
+        text-align: center;
+      }
+      .flex-box {
+        display: flex;
+        justify-content: space-between;
+      }
+      .room-list {
+        width: 40%;
+      }
+      .chart-room {
+        border: 1px solid #000;
+        width: 50%;
+        position: relative;
+      }
+      #message-container {
+        max-width: 1200px;
+      }
+      #message-container div {
+        background-color: #ccc;
+        padding: 5px;
+      }
+      #message-container div:nth-child(2n) {
+        background-color: #fff;
+      }
+      #send-container {
+        position: absolute;
+        bottom: 0;
+        background-color: white;
+        max-width: 1200px;
+        width: 80%;
+        margin-left: 10%;
+        display: flex;
+      }
+
+      #message-input {
+        flex-grow: 1;
+      }
+      #user-list{
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex-box">
+      <div class="room-list">
+        <div id="room-container">
+          <!-- <% Object.keys(rooms).forEach(room => { %>
+          <div><%= room %></div>
+          <a href="/<%= room %>">Join</a>
+        <% }) %> -->
+        </div>
+        <form action="/rooms" method="POST" id="addRoomForm">
+          <button type="submit">发起聊天</button>
+        </form>
+      </div>
+
+      <div class="chart-room">
+        
+       <h2  id="room-name"></h2>
+        <div class="flex-box">
+          <div id="user-list"></div>
+          <div id="message-container"></div>
+        </div>
+        <form id="send-container">
+          <input type="text" id="message-input" />
+          <button type="submit" id="send-button">Send</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
